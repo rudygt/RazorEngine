@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Impromptu - RazorEngine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Matthew Abbott">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="https://Antaris.github.io/RazorEngine/content/style.css" />
+    <link type="text/css" rel="stylesheet" href="https://Antaris.github.io/RazorEngine/content/prism.css" />
+    <script type="text/javascript" src="https://Antaris.github.io/RazorEngine/content/tips.js"></script>
+    <script type="text/javascript" src="https://Antaris.github.io/RazorEngine/content/prism.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="https://matthid.github.io/Yaaf.AdvancedBuilding/content/img/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="https://Antaris.github.io/RazorEngine/index.html">RazorEngine</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Impromptu </h1>
+<div class="xmldoc">
+    Defined in RazorEngine.dll.
+</div>
+<div class="xmldoc">
+
+            Main API
+            </br></div>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '164', 164)" onmouseover="showTip(event, '164', 164)">
+            ActLike(...)
+          </code>
+          <div class="tip" id="164">
+            <strong>Signature:</strong> (originalDynamic:obj * otherInterfaces:Type []) -&gt; &#39;TInterface<br />
+                          <strong>Type parameters:</strong> 'TInterface          </div>
+        </td>
+        <td class="xmldoc">
+          
+            Extension Method that Wraps an existing object with an Explicit interface definition
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '165', 165)" onmouseover="showTip(event, '165', 165)">
+            ActLike(...)
+          </code>
+          <div class="tip" id="165">
+            <strong>Signature:</strong> (originalDynamic:obj * otherInterfaces:Type []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Extension Method that Wraps an existing object with an Interface of what it is implicitly assigned to.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '166', 166)" onmouseover="showTip(event, '166', 166)">
+            ActLikeProperties(...)
+          </code>
+          <div class="tip" id="166">
+            <strong>Signature:</strong> (originalDynamic:obj * propertySpec:IDictionary&lt;string,Type&gt;) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Makes static methods for the passed in property spec, designed to be used with old api's that reflect properties.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '167', 167)" onmouseover="showTip(event, '167', 167)">
+            AllActLike(...)
+          </code>
+          <div class="tip" id="167">
+            <strong>Signature:</strong> (originalDynamic:IEnumerable&lt;obj&gt; * otherInterfaces:Type []) -&gt; IEnumerable&lt;&#39;TInterface&gt;<br />
+                          <strong>Type parameters:</strong> 'TInterface          </div>
+        </td>
+        <td class="xmldoc">
+          
+            Chainable Linq to Objects Method, allows you to wrap a list of objects with an Explict interface defintion
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '168', 168)" onmouseover="showTip(event, '168', 168)">
+            AllCallActLike(...)
+          </code>
+          <div class="tip" id="168">
+            <strong>Signature:</strong> (originalDynamic:IEnumerable&lt;obj&gt; * caller:obj * otherInterfaces:Type []) -&gt; IEnumerable&lt;&#39;TInterface&gt;<br />
+                          <strong>Type parameters:</strong> 'TInterface          </div>
+        </td>
+        <td class="xmldoc">
+          
+            Chainable Linq to Objects Method, allows you to wrap a list of objects, and preserve method permissions with a caller, with an Explict interface defintion
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '169', 169)" onmouseover="showTip(event, '169', 169)">
+            CallActLike(...)
+          </code>
+          <div class="tip" id="169">
+            <strong>Signature:</strong> (caller:obj * originalDynamic:obj * otherInterfaces:Type []) -&gt; &#39;TInterface<br />
+                          <strong>Type parameters:</strong> 'TInterface          </div>
+        </td>
+        <td class="xmldoc">
+          
+            This Extension method is called off the calling context to perserve permissions with the object wrapped with an explicit interface definition.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '170', 170)" onmouseover="showTip(event, '170', 170)">
+            CallDynamicActLike(...)
+          </code>
+          <div class="tip" id="170">
+            <strong>Signature:</strong> (caller:obj * originalDynamic:obj * otherInterfaces:Type []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            This Extension method is called off the calling context to perserve permissions with the object wrapped with an explicit interface definition.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '171', 171)" onmouseover="showTip(event, '171', 171)">
+            CoerceToDelegate(...)
+          </code>
+          <div class="tip" id="171">
+            <strong>Signature:</strong> (invokeableObject:obj * delegateType:Type) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Coerce to delegate.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '172', 172)" onmouseover="showTip(event, '172', 172)">
+            CreateCallSite(...)
+          </code>
+          <div class="tip" id="172">
+            <strong>Signature:</strong> (delegateType:Type * binder:CallSiteBinder * name:String_OR_InvokeMemberName * context:Type * argNames:string [] * staticContext:bool * isEvent:bool) -&gt; CallSite<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Creates a cached call site at runtime.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '173', 173)" onmouseover="showTip(event, '173', 173)">
+            CreateCallSite(...)
+          </code>
+          <div class="tip" id="173">
+            <strong>Signature:</strong> (binder:CallSiteBinder * name:String_OR_InvokeMemberName * context:Type * argNames:string [] * staticContext:bool * isEvent:bool) -&gt; CallSite&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+            Creates the call site.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '174', 174)" onmouseover="showTip(event, '174', 174)">
+            DynamicActLike(...)
+          </code>
+          <div class="tip" id="174">
+            <strong>Signature:</strong> (originalDynamic:obj * otherInterfaces:Type []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Static Method that wraps an existing dyanmic object with a explicit interface type
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '175', 175)" onmouseover="showTip(event, '175', 175)">
+            FastDynamicInvoke(del, args)
+          </code>
+          <div class="tip" id="175">
+            <strong>Signature:</strong> (del:Delegate * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            FastDynamicInvoke extension method. Runs up to runs up to 20x faster than <a href="http://msdn.microsoft.com/en-us/library/System.Delegate.DynamicInvoke">Delegate.DynamicInvoke</a> .
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '176', 176)" onmouseover="showTip(event, '176', 176)">
+            GenericDelegateType(...)
+          </code>
+          <div class="tip" id="176">
+            <strong>Signature:</strong> (paramCount:int * returnVoid:bool) -&gt; Type<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Given a generic parameter count and whether it returns void or not gives type of Action or Func
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '177', 177)" onmouseover="showTip(event, '177', 177)">
+            GetMemberNames(target, dynamicOnly)
+          </code>
+          <div class="tip" id="177">
+            <strong>Signature:</strong> (target:obj * dynamicOnly:bool) -&gt; IEnumerable&lt;string&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Gets the member names of properties. Not all IDynamicMetaObjectProvider have support for this.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '178', 178)" onmouseover="showTip(event, '178', 178)">
+            Invoke(target, args)
+          </code>
+          <div class="tip" id="178">
+            <strong>Signature:</strong> (target:obj * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes the specified target using the DLR;
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '179', 179)" onmouseover="showTip(event, '179', 179)">
+            Invoke(callSite, target, args)
+          </code>
+          <div class="tip" id="179">
+            <strong>Signature:</strong> (callSite:CallSite * target:obj * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Dynamically invokes a method determined by the CallSite binder and be given an appropriate delegate type
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '180', 180)" onmouseover="showTip(event, '180', 180)">
+            InvokeAction(target, args)
+          </code>
+          <div class="tip" id="180">
+            <strong>Signature:</strong> (target:obj * args:obj []) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes the action using the DLR
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '181', 181)" onmouseover="showTip(event, '181', 181)">
+            InvokeAddAssign(target, name, value)
+          </code>
+          <div class="tip" id="181">
+            <strong>Signature:</strong> (target:obj * name:string * value:obj) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes add assign with correct behavior for events.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '182', 182)" onmouseover="showTip(event, '182', 182)">
+            InvokeAddAssignMember(...)
+          </code>
+          <div class="tip" id="182">
+            <strong>Signature:</strong> (target:obj * name:string * value:obj) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes add assign with correct behavior for events.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '183', 183)" onmouseover="showTip(event, '183', 183)">
+            InvokeBinaryOperator(...)
+          </code>
+          <div class="tip" id="183">
+            <strong>Signature:</strong> (leftArg:obj * op:ExpressionType * rightArg:obj) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes the binary operator.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '184', 184)" onmouseover="showTip(event, '184', 184)">
+            InvokeCallSite(callSite, target, args)
+          </code>
+          <div class="tip" id="184">
+            <strong>Signature:</strong> (callSite:CallSite * target:obj * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Dynamically invokes a method determined by the CallSite binder and be given an appropriate delegate type
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '185', 185)" onmouseover="showTip(event, '185', 185)">
+            InvokeConstructor(type, args)
+          </code>
+          <div class="tip" id="185">
+            <strong>Signature:</strong> (type:Type * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes the constuctor.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '186', 186)" onmouseover="showTip(event, '186', 186)">
+            InvokeConstuctor(type, args)
+          </code>
+          <div class="tip" id="186">
+            <strong>Signature:</strong> (type:Type * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            (Obsolete)Invokes the constructor. misspelling
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '187', 187)" onmouseover="showTip(event, '187', 187)">
+            InvokeConvert(target, type, explicit)
+          </code>
+          <div class="tip" id="187">
+            <strong>Signature:</strong> (target:obj * type:Type * explicit:bool) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes  convert using the DLR.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '188', 188)" onmouseover="showTip(event, '188', 188)">
+            InvokeGet(target, name)
+          </code>
+          <div class="tip" id="188">
+            <strong>Signature:</strong> (target:obj * name:string) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+             Dynamically Invokes a get member using the DLR.
+             </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '189', 189)" onmouseover="showTip(event, '189', 189)">
+            InvokeGetIndex(target, indexes)
+          </code>
+          <div class="tip" id="189">
+            <strong>Signature:</strong> (target:obj * indexes:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Dynamically Invokes indexer using the DLR.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '190', 190)" onmouseover="showTip(event, '190', 190)">
+            InvokeIsEvent(target, name)
+          </code>
+          <div class="tip" id="190">
+            <strong>Signature:</strong> (target:obj * name:string) -&gt; bool<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Determines whether the specified name on target is event. This allows you to know whether to InvokeMemberAction
+             add_{name} or a combo of {invokeget, +=, invokeset} and the corresponding remove_{name} 
+            or a combon of {invokeget, -=, invokeset}
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '191', 191)" onmouseover="showTip(event, '191', 191)">
+            InvokeMember(target, name, args)
+          </code>
+          <div class="tip" id="191">
+            <strong>Signature:</strong> (target:obj * name:String_OR_InvokeMemberName * args:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+             Dynamically Invokes a member method using the DLR
+             </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '192', 192)" onmouseover="showTip(event, '192', 192)">
+            InvokeMemberAction(target, name, args)
+          </code>
+          <div class="tip" id="192">
+            <strong>Signature:</strong> (target:obj * name:String_OR_InvokeMemberName * args:obj []) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+             Dynamically Invokes a member method which returns void using the DLR
+             </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '193', 193)" onmouseover="showTip(event, '193', 193)">
+            InvokeSet(target, name, value)
+          </code>
+          <div class="tip" id="193">
+            <strong>Signature:</strong> (target:obj * name:string * value:obj) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+             Dynamically Invokes a set member using the DLR.
+             </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '194', 194)" onmouseover="showTip(event, '194', 194)">
+            InvokeSetIndex(target, indexesThenValue)
+          </code>
+          <div class="tip" id="194">
+            <strong>Signature:</strong> (target:obj * indexesThenValue:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes setindex.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '195', 195)" onmouseover="showTip(event, '195', 195)">
+            InvokeSetValueOnIndexes(...)
+          </code>
+          <div class="tip" id="195">
+            <strong>Signature:</strong> (target:obj * value:obj * indexes:obj []) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Convenience version of InvokeSetIndex that separates value and indexes.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '196', 196)" onmouseover="showTip(event, '196', 196)">
+            InvokeSubtractAssign(...)
+          </code>
+          <div class="tip" id="196">
+            <strong>Signature:</strong> (target:obj * name:string * value:obj) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes subtract assign with correct behavior for events.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '197', 197)" onmouseover="showTip(event, '197', 197)">
+            InvokeSubtractAssignMember(...)
+          </code>
+          <div class="tip" id="197">
+            <strong>Signature:</strong> (target:obj * name:string * value:obj) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes subtract assign with correct behavior for events.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '198', 198)" onmouseover="showTip(event, '198', 198)">
+            InvokeUnaryOperator(op, arg)
+          </code>
+          <div class="tip" id="198">
+            <strong>Signature:</strong> (op:ExpressionType * arg:obj) -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Invokes the unary opartor.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '199', 199)" onmouseover="showTip(event, '199', 199)">
+            UndoActLike(proxiedObject)
+          </code>
+          <div class="tip" id="199">
+            <strong>Signature:</strong> proxiedObject:obj -&gt; obj<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Unwraps the act like proxy (if wrapped).
+            </br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="https://Antaris.github.io/RazorEngine/index.html">
+            <img src="https://Antaris.github.io/RazorEngine/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">RazorEngine</li>
+
+            <li class="divider"></li>
+            <li><a href="https://www.nuget.org/packages/RazorEngine/">Get RazorEngine package via NuGet</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine">Source Code</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/issues">Open bugs and feature requests</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/issues/new">Report Issue or Request Feature</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/blob/develop/doc/LICENSE.md">License (MS-PL)</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Contributing.html">Contributing</a></li>
+            
+            <li class="nav-header">Documentation</li>
+              
+            <li><a href="https://Antaris.github.io/RazorEngine/index.html">Quick Intro</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/AboutRazor.html">About Razor and its Syntax</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/TemplateBasics.html">Templating basics</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/LayoutAndPartial.html">Layout and Partial Templates</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Encoding.html">Encoding Values in Razor</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/ReferenceResolver.html">Reference Resolver</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Isolation.html">Isolation and Sandboxing</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/TemplateManager.html">TemplateManager and Caching</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/DevelopReadme.html">Development Intro</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Upgrading.html">Upgrading Guide (3.5.0)</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/ReleaseNotes.html">Release Notes</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/IntellisenseAndResharper.html">Intellisense and ReSharper</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Roslyn.html">Roslyn Support</a></li>
+
+            <li class="nav-header">Reference</li>
+              
+            <li><a href="https://Antaris.github.io/RazorEngine/references/index.html">API Reference</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+      <a href="https://github.com/Antaris/RazorEngine"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </body>
+  </html>

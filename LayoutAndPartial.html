@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Layout and Partial templates
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple templating using Razor syntax.">
+    <meta name="author" content="Matthew Abbott">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="https://Antaris.github.io/RazorEngine/content/style.css" />
+    <link type="text/css" rel="stylesheet" href="https://Antaris.github.io/RazorEngine/content/prism.css" />
+    <script type="text/javascript" src="https://Antaris.github.io/RazorEngine/content/tips.js"></script>
+    <script type="text/javascript" src="https://Antaris.github.io/RazorEngine/content/prism.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="https://matthid.github.io/Yaaf.AdvancedBuilding/content/img/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="https://Antaris.github.io/RazorEngine/index.html">RazorEngine</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h1><a name="Layout-and-Partial-templates" class="anchor" href="#Layout-and-Partial-templates">Layout and Partial templates</a></h1>
+
+<p>This section explains how you can use Layout templates and embed templates one in another.</p>
+
+<h2><a name="Layout-template" class="anchor" href="#Layout-template">Layout template</a></h2>
+
+<p>Defining a layout is quite simple.
+First make sure to set the <code>Layout</code> property in the template using the layout template name.
+Note that using <code>Layout</code> within a layout template is supported.
+Second make sure the <code>string</code> you set for the Layout property can actually resolved by the template manager.
+For the default manager this means you added the template (with <code>AddTemplate</code>):</p>
+
+<pre class="line-numbers language-csharp"><code class="language-csharp">using RazorEngine;
+using RazorEngine.Templating;
+using System;
+
+namespace TestRunnerHelper
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var service = Engine.Razor;
+            // In this example I&#39;m using the default configuration, but you should choose a different template manager: http://antaris.github.io/RazorEngine/TemplateManager.html
+            service.AddTemplate(&quot;layout&quot;, &quot;&lt;h1&gt;@RenderBody()&lt;/h1&gt;&quot;);
+            service.AddTemplate(&quot;template&quot;, @&quot;@{Layout = &quot;&quot;layout&quot;&quot;;}my template&quot;);
+            service.Compile(&quot;template&quot;);
+            var result = service.Run(&quot;template&quot;);
+            Console.WriteLine(&quot;Result is: {0}&quot;, result);
+        }
+    }
+}
+</code></pre>
+
+<blockquote>
+  <p>The code will print <code>&lt;h1&gt;my template&lt;/h1&gt;</code>.</p>
+</blockquote>
+
+<p>but other managers resolve template differently, please read <a href="http://antaris.github.io/RazorEngine/TemplateManager.html">http://antaris.github.io/RazorEngine/TemplateManager.html</a> for details!
+As you can see, all you need to do in the layout template is call <code>@RenderBody()</code> on the place you want your child template to appear.</p>
+
+<h2><a name="Partial-templates" class="anchor" href="#Partial-templates">Partial templates</a></h2>
+
+<p>All there is to do is to make a <code>@Include</code> call from within the template:</p>
+
+<p><code>Include(string cacheName, object model = null, Type modelType = null)</code></p>
+
+<p>As for layouts you need to ensure that the first string parameter can be resolved to a template:</p>
+
+<pre class="line-numbers language-csharp"><code class="language-csharp">using RazorEngine;
+using RazorEngine.Templating;
+using System;
+
+namespace TestRunnerHelper
+{
+    public class SubModel
+    {
+        public string SubModelProperty { get; set; }
+    }
+
+    public class MyModel
+    {
+        public string ModelProperty { get; set; }
+        public SubModel SubModel { get; set; }
+    }
+
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            var service = Engine.Razor;
+            // In this example I&#39;m using the default configuration, but you should choose a different template manager: http://antaris.github.io/RazorEngine/TemplateManager.html
+            service.AddTemplate(&quot;part&quot;, @&quot;my template&quot;);
+            // If you leave the second and third parameters out the current model will be used.
+            // If you leave the third we assume the template can be used for multiple types and use &quot;dynamic&quot;.
+            // If the second parameter is null (which is default) the third parameter is ignored.
+            // To workaround in the case you want to specify type &quot;dynamic&quot; without specifying a model use Include(&quot;p&quot;, new object(), null)
+            service.AddTemplate(&quot;template&quot;, @&quot;&lt;h1&gt;@Include(&quot;&quot;part&quot;&quot;, @Model.SubModel, typeof(TestRunnerHelper.SubModel))&lt;/h1&gt;&quot;);
+            service.Compile(&quot;template&quot;, typeof(MyModel));
+            service.Compile(&quot;part&quot;, typeof(SubModel));
+            var result = service.Run(&quot;template&quot;, typeof(MyModel), new MyModel { ModelProperty = &quot;model&quot;, SubModel = new SubModel { SubModelProperty = &quot;submodel&quot;} });
+            Console.WriteLine(&quot;Result is: {0}&quot;, result);
+        }
+    }
+}
+</code></pre>
+
+<h2><a name="General-considerations" class="anchor" href="#General-considerations">General considerations</a></h2>
+
+<p>As the above code showed a way to fully type all the templates you should consider adding <code>@inherits</code>
+directives to the templates as explained in <a href="https://antaris.github.io/RazorEngine/IntellisenseAndResharper.html">https://antaris.github.io/RazorEngine/IntellisenseAndResharper.html</a></p>
+
+
+        </div>
+        <div class="span3">
+          <a href="https://Antaris.github.io/RazorEngine/index.html">
+            <img src="https://Antaris.github.io/RazorEngine/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">RazorEngine</li>
+
+            <li class="divider"></li>
+            <li><a href="https://www.nuget.org/packages/RazorEngine/">Get RazorEngine package via NuGet</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine">Source Code</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/issues">Open bugs and feature requests</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/issues/new">Report Issue or Request Feature</a></li>
+            <li><a href="https://github.com/Antaris/RazorEngine/blob/develop/doc/LICENSE.md">License (MS-PL)</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Contributing.html">Contributing</a></li>
+            
+            <li class="nav-header">Documentation</li>
+              
+            <li><a href="https://Antaris.github.io/RazorEngine/index.html">Quick Intro</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/AboutRazor.html">About Razor and its Syntax</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/TemplateBasics.html">Templating basics</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/LayoutAndPartial.html">Layout and Partial Templates</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Encoding.html">Encoding Values in Razor</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/ReferenceResolver.html">Reference Resolver</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Isolation.html">Isolation and Sandboxing</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/TemplateManager.html">TemplateManager and Caching</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/DevelopReadme.html">Development Intro</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Upgrading.html">Upgrading Guide (3.5.0)</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/ReleaseNotes.html">Release Notes</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/IntellisenseAndResharper.html">Intellisense and ReSharper</a></li>
+            <li><a href="https://Antaris.github.io/RazorEngine/Roslyn.html">Roslyn Support</a></li>
+
+            <li class="nav-header">Reference</li>
+              
+            <li><a href="https://Antaris.github.io/RazorEngine/references/index.html">API Reference</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+      <a href="https://github.com/Antaris/RazorEngine"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </body>
+  </html>
